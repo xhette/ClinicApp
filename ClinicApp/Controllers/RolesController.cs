@@ -1,29 +1,29 @@
-﻿using ClinicApp.Models;
-using ClinicData;
-using ClinicData.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ClinicApp.Models;
+using ClinicData;
+using ClinicData.Entities;
 
 namespace ClinicApp.Controllers
 {
-    public class AreasController : Controller
+    public class RolesController : Controller
     {
-        // GET: Areas
+        // GET: Roles
         public ActionResult Index()
         {
             DbWork db = new DbWork();
-            List<AreaModel> model = new List<AreaModel>();
+            List<RoleModel> model = new List<RoleModel>();
 
-            var dbList = db.GetAreas();
+            var dbList = db.GetRoles();
 
             if (dbList != null)
             {
                 foreach (var entity in dbList)
                 {
-                    model.Add(new AreaModel(entity));
+                    model.Add(new RoleModel(entity));
                 }
             }
 
@@ -33,57 +33,57 @@ namespace ClinicApp.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            AreaModel model = new AreaModel();
+            RoleModel model = new RoleModel();
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(AreaModel model)
+        public ActionResult Create(RoleModel model)
         {
-            Area area = new Area
+            Role area = new Role
             {
                 Name = model.Name
             };
 
             DbWork db = new DbWork();
-            db.AddArea(area);
+            db.AddRole(area);
 
-            return RedirectToAction("Index", "Areas");
+            return RedirectToAction("Index", "Roles");
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
             DbWork db = new DbWork();
-            var dbEntity = db.GetAreas().Where(c => c.Id == id).FirstOrDefault();
+            var dbEntity = db.GetRoles().Where(c => c.Id == id).FirstOrDefault();
 
-            AreaModel model = new AreaModel(dbEntity);
+            RoleModel model = new RoleModel(dbEntity);
 
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Edit(AreaModel model)
+        public ActionResult Edit(RoleModel model)
         {
-            Area area = new Area
+            Role area = new Role
             {
                 Id = model.Id,
                 Name = model.Name
             };
 
             DbWork db = new DbWork();
-            db.EditArea(area);
+            db.EditRole(area);
 
-            return RedirectToAction("Index", "Areas");
+            return RedirectToAction("Index", "Roles");
         }
 
         public ActionResult Delete(int id)
         {
             DbWork db = new DbWork();
-            db.DeleteArea(id);
+            db.DeleteRole(id);
 
-            return RedirectToAction("Index", "Areas");
+            return RedirectToAction("Index", "Roles");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ClinicData.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ClinicApp.Models
@@ -9,6 +10,8 @@ namespace ClinicApp.Models
 	{
 		public int Id { get; set; }
 
+		[Display(Name = "Название")]
+		[Required(ErrorMessage = "Введите название участка")]
 		public string Name { get; set; }
 
 		public AreaModel() { }

@@ -1,12 +1,12 @@
-﻿@model IEnumerable<ClinicApp.Models.AreaModel>
+﻿@model IEnumerable<ClinicApp.Models.RoleModel>
 
 @{
-    ViewBag.Title = "Участки";
+    ViewBag.Title = "Роли пользователей";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <p class="text-right" style="margin: 20px 0;">
-    @Html.ActionLink("Добавить", "Create", "Areas")
+    @Html.ActionLink("Добавить", "Create", "Roles")
 </p>
 <table class="table">
     <tr>
@@ -25,11 +25,11 @@
             @item.Id
         </td>
         <td>
-            @Html.ActionLink(item.Name, "ByArea", "Streets", new { areaId = item.Id }, null)
+            @item.Name
         </td>
         <td class="text-right">
-            @Html.ActionLink("Edit", "Edit", "Areas", new { id=item.Id }, null) |
-            @Html.ActionLink("Delete", "Delete", "Areas", new { id=item.Id }, null)
+            @Html.ActionLink("Edit", "Edit", "Roles", new { id=item.Id }, null) |
+            @Html.ActionLink("Delete", "Delete", "Roles", new { id=item.Id }, null)
         </td>
     </tr>
 }
