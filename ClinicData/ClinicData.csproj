@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Composite\DoctorComposite.cs" />
     <Compile Include="DbWork.cs" />
     <Compile Include="Entities\Area.cs" />
     <Compile Include="Entities\Diagnosis.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Entities\Speciality.cs" />
     <Compile Include="Entities\Street.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Composite\PatientComposite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
