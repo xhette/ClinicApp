@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="text-center" style="margin: 50px 0;">
+    <strong>Выберите роль:</strong>
+</h3>
+<p class="text-center">
+    @Html.ActionLink("Пациент", "RegisterPacient", "Registration", new { @class = "btn btn-primary btn-lg btn-block" })
+</p>
+<p class="text-center">
+    @Html.ActionLink("Врач", "RegisterDoctor", "Registration", new { @class = "btn btn-primary btn-lg btn-block" })
+</p>
+<p class="text-center">
+    @Html.ActionLink("Работник регистратуры", "RegisterReceptionist", "Registration", new { @class = "btn btn-primary btn-lg btn-block" })
+</p>
+

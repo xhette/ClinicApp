@@ -17,6 +17,8 @@ namespace ClinicData.Entities
 
 		public int Speciality { get; set; }
 
+		public string SpecialityName { get; set; }
+
 		public int Area { get; set; }
 
 		public int Account { get; set; }
@@ -30,6 +32,7 @@ namespace ClinicData.Entities
 			Name = rec["doctor_name"].ToString();
 			Patronymic = rec["doctor_patronymic"].ToString();
 			Speciality = Convert.ToInt32(rec["speciality"]);
+			SpecialityName = rec["speciality_name"].ToString();
 			Area = Convert.ToInt32(rec["area"]);
 			Account = Convert.ToInt32(rec["account"]);
 		}

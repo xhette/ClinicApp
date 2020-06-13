@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ClinicApp.Models.CaseRecordModel>
+
+@{
+    ViewBag.Title = "Records";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs" style="margin-top: 50px;">
+    <li>@Html.ActionLink("Главная", "Index", "Patient")</li>
+    <li class="active">@Html.ActionLink("Диагнозы", "Records", "Patient")</li>
+    <li>@Html.ActionLink("Приёмы", "Reception", "Patient")</li>
+</ul>
+
+<div style="margin-top:30px; max-width: 350px;">
+
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default" style="margin: 20px 0;">
+            <div class="panel-heading">@item.Diagnosis.Code &#8212; @item.Diagnosis.Description</div>
+            <div class="panel-body">
+                @item.Record.Therapy
+            </div>
+        </div>
+    }
+</div>

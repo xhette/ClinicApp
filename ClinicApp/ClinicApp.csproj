@@ -121,7 +121,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AreasController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\ReceptionistController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\StreetsController.cs" />
     <Compile Include="Enums\UserRoleEnum.cs" />
@@ -129,7 +133,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AreaModel.cs" />
+    <Compile Include="Models\CaseRecordModel.cs" />
+    <Compile Include="Models\DiagnosisModel.cs" />
+    <Compile Include="Models\DoctorModel.cs" />
+    <Compile Include="Models\PatientModel.cs" />
+    <Compile Include="Models\RecordModel.cs" />
+    <Compile Include="Models\RegisterDoctorModel.cs" />
+    <Compile Include="Models\RegisterPatientModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\SpecialityModel.cs" />
     <Compile Include="Models\StreetModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,9 +179,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Areas\Index.cshtml" />
     <Content Include="Views\Areas\Create.cshtml" />
     <Content Include="Views\Areas\Edit.cshtml" />
@@ -180,9 +189,18 @@
     <Content Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Registration\RegisterPacient.cshtml" />
+    <Content Include="Views\Registration\RegisterDoctor.cshtml" />
+    <Content Include="Views\Registration\RegisterReceptionist.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\Patient\Records.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Doctor\" />
+    <Folder Include="Views\Receptionist\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>

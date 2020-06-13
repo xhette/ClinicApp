@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using ClinicApp.Enums;
@@ -11,8 +12,12 @@ namespace ClinicApp.Models
 	{
 		public int Id { get; set; }
 
+		[Display(Name = "Логин")]
+		[Required(ErrorMessage = "Введите логин")]
 		public string Login { get; set; }
 
+		[Display(Name = "Пароль")]
+		[Required(ErrorMessage = "Введите пароль")]
 		public string Password { get; set; }
 
 		public UserRoleEnum Role { get; set; }

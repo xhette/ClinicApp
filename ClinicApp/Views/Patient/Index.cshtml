@@ -1,0 +1,18 @@
+﻿@model ClinicApp.Models.PatientModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ul class="nav nav-tabs" style="margin-top: 50px;">
+    <li class="active">@Html.ActionLink("Главная","Index", "Patient")</li>
+    <li>@Html.ActionLink("Диагнозы", "Records", "Patient")</li>
+    <li>@Html.ActionLink("Приёмы", "Reception", "Patient")</li>
+</ul>
+
+<div style="margin-top: 50px; max-width: 350px;">
+    <ul class="list-group">
+        <li class="list-group-item"><h4>@Model.Surname @Model.Name @Model.Patronymic</h4></li>
+        <li class="list-group-item"><strong>Адрес: </strong>@Model.Address</li>
+    </ul>
+</div>

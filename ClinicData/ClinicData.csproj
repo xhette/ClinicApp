@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Composite\DoctorComposite.cs" />
+    <Compile Include="Composite\RecordComposite.cs" />
     <Compile Include="DbWork.cs" />
     <Compile Include="Entities\Area.cs" />
     <Compile Include="Entities\Diagnosis.cs" />

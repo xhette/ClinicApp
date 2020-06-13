@@ -17,6 +17,8 @@ namespace ClinicData.Entities
 
 		public int Street { get; set; }
 
+		public string StreetName { get; set; }
+
 		public int House { get; set; }
 
 		public int Room { get; set; }
@@ -27,11 +29,12 @@ namespace ClinicData.Entities
 
 		public Patient(DbDataRecord rec)
 		{
-			Id = Convert.ToInt32(rec["pacient_id"]);
-			Surname = rec["pacient_surname"].ToString();
-			Name = rec["pacient_name"].ToString();
-			Patronymic = rec["pacient_patronymic"].ToString();
+			Id = Convert.ToInt32(rec["patient_id"]);
+			Surname = rec["patient_surname"].ToString();
+			Name = rec["patient_name"].ToString();
+			Patronymic = rec["patient_patronymic"].ToString();
 			Street = Convert.ToInt32(rec["street"]);
+			StreetName = rec["street_name"].ToString();
 			House = Convert.ToInt32(rec["house"]);
 			Room = Convert.ToInt32(rec["room"]);
 			Account = Convert.ToInt32(rec["account"]);
