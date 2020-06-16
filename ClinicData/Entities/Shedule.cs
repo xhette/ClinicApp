@@ -21,10 +21,10 @@ namespace ClinicData.Entities
 
 		public Shedule (DbDataRecord rec)
 		{
-			Id = Convert.ToInt32(rec["shedule_id"]);
-			Date = Convert.ToDateTime(rec["shedule_date"]);
-			StartTime = Convert.ToDateTime(rec["start_time"]);
-			EndTime = Convert.ToDateTime(rec["end_time"]);
+			Id = Convert.ToInt32(rec["schedule_id"]);
+			Date = Convert.ToDateTime(rec["schedule_date"].ToString());
+			StartTime = Convert.ToDateTime(rec["start_time"].ToString());
+			EndTime = Convert.ToDateTime(rec["end_time"].ToString());
 			Doctor = Convert.ToInt32(rec["doctor"]);
 		}
 	}

@@ -11,7 +11,7 @@ namespace ClinicData.Entities
 
 		public DateTime Time { get; set; }
 
-		public int Patient { get; set; }
+		public int? Patient { get; set; }
 
 		public int Shedule { get; set; }
 
@@ -20,8 +20,8 @@ namespace ClinicData.Entities
 		public Reception (DbDataRecord rec)
 		{
 			Id = Convert.ToInt32(rec["reception_id"]);
-			Time = Convert.ToDateTime(rec["reception_time"]);
-			Shedule = Convert.ToInt32(rec["shedule"]);
+			Time = Convert.ToDateTime(rec["reception_time"].ToString());
+			Shedule = Convert.ToInt32(rec["schedule"]);
 			Patient = Convert.ToInt32(rec["patient"]);
 		}
 	}

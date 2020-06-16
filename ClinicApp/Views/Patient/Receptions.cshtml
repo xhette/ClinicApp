@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ClinicApp.Models.ReceptionViewModel>
+
+@{
+    ViewBag.Title = "Receptions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs" style="margin-top: 50px;">
+    <li>@Html.ActionLink("Главная", "Index", "Patient")</li>
+    <li>@Html.ActionLink("Диагнозы", "Records", "Patient")</li>
+    <li class="active">@Html.ActionLink("Приёмы", "Receptions", "Patient")</li>
+</ul>
+
+<p style="margin-top: 50px" class="text-right">
+    @Html.ActionLink("Записаться на приём", "AddReceptionSpecialities", "Patient", new { @class = "btn btn-primary" })
+</p>
+
+<table class="table" style="margin-top: 50px">
+    <thead>
+        <tr>
+            <th>
+                Доктор
+            </th>
+            <th>
+                Специализация
+            </th>
+            <th>
+                Дата
+            </th>
+            <th>
+                Время
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Doctor.Surname @item.Doctor.Name @item.Doctor.Patronymic
+                </td>
+                <td>
+                    @item.Doctor.SpecialityName
+                </td>
+                <td>
+                    @item.Schedule.Date.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.Reception.Time.ToString("HH:mm")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

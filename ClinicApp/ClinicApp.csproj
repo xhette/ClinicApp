@@ -137,10 +137,13 @@
     <Compile Include="Models\DiagnosisModel.cs" />
     <Compile Include="Models\DoctorModel.cs" />
     <Compile Include="Models\PatientModel.cs" />
+    <Compile Include="Models\ReceptionModel.cs" />
+    <Compile Include="Models\ReceptionViewModel.cs" />
     <Compile Include="Models\RecordModel.cs" />
     <Compile Include="Models\RegisterDoctorModel.cs" />
     <Compile Include="Models\RegisterPatientModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Models\SpecialityModel.cs" />
     <Compile Include="Models\StreetModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -196,6 +199,11 @@
     <Content Include="Views\Patient\Index.cshtml" />
     <Content Include="Views\Patient\Records.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Patient\Receptions.cshtml" />
+    <Content Include="Views\Patient\ReceptionCalendar.cshtml" />
+    <Content Include="Views\Patient\AddReceptionSpecialities.cshtml" />
+    <Content Include="Views\Patient\AddReceptionDoctor.cshtml" />
+    <Content Include="Views\Patient\AddReceptionSchedule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,32 @@
+﻿@model ClinicApp.Models.ScheduleModel
+
+@{
+    ViewBag.Title = "ReceptionCalendar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div style="margin-top: 50px;">
+            <strong>
+                Дата:
+            </strong>
+                @Html.DisplayFor(model => model.Date)
+
+        <div style="margin-top: 30px; display: flex; flex-direction: row; flex-wrap: wrap;">
+
+            @foreach (var reception in Model.Receptions)
+            {
+                if (reception.Available)
+                {
+                    @Html.ActionLink(@reception.Time.ToString("HH:mm"), "AddReception", "Patient", new { time = reception.Time, scheduleId = Model.Id }, new { @class = "btn btn-primary", @style = "margin: 10px;" })
+                    //<button class="btn btn-primary" style="margin: 10px;">@reception.Time.ToString("HH:mm")</button>
+                }
+                else
+                {
+                    <button class="btn btn-primary" style="margin: 10px;" disabled>@reception.Time.ToString("HH:mm")</button>
+                }
+            }
+        </div>
+    </div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

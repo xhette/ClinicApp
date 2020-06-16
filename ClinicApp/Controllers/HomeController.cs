@@ -14,6 +14,11 @@ namespace ClinicApp.Controllers
 		[HttpGet]
 		public ActionResult Index()
 		{
+			Session["UserId"] = null;
+			Session["UserRole"] = null;
+			Session["PatientId"] = null;
+
+
 			UserModel model = new UserModel();
 
 			return View(model);

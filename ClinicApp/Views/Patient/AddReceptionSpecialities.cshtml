@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ClinicApp.Models.SpecialityModel>
+
+@{
+    ViewBag.Title = "AddReceptionSpecialities";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="list-group" style="margin-top: 50px">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            @Html.ActionLink(item.Name, "AddReceptionDoctor", "Patient", new { specId = item.Id }, null)
+        </li>
+     }
+</ul>

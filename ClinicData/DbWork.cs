@@ -396,6 +396,28 @@ namespace ClinicData
 			cmd2.ExecuteNonQuery();
 			_connection.Close();
 		}
+
+		public List<Doctor> GetDoctorsBySpec (int specId)
+		{
+			List<Doctor> doctors = new List<Doctor>();
+
+			_connection.Open();
+			var sql = String.Format("select * from doctors join specialities on speciality = speciality_id where speciality = {0}", specId);
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					doctors.Add(new Doctor(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return doctors;
+		}
 		#endregion
 
 		#region Receptionists
@@ -483,6 +505,120 @@ namespace ClinicData
 			_connection.Close();
 
 			return records;
+		}
+		#endregion
+
+		#region Receptions
+		public List<ReceptionComposite> ReceptionsByPatient(int patientId)
+		{
+			List<ReceptionComposite> receptions = new List<ReceptionComposite>();
+
+			_connection.Open();
+
+			string sql = String.Format("select * from patients join (reception join (schedules join (doctors join specialities on speciality = speciality_id) on doctor = doctor_id) on schedule = schedule_id) on patient = patient_id join streets on street = street_id where patient = {0}", patientId);
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					receptions.Add(new ReceptionComposite(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return receptions;
+		}
+
+		public Reception ReceptionByScheduleAndTime (int schedule, DateTime time)
+		{
+			Reception reception = new Reception();
+
+			_connection.Open();
+
+			string sql = String.Format("select * from reception join (schedules join (doctors join specialities on speciality = speciality_id) on doctor = doctor_id) on schedule = schedule_id where schedule = {0} and reception_time = '{1}'", schedule, time.ToString("HH:mm:ss"));
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					reception = new Reception (dbDataRecord);
+				}
+			}
+			else
+			{
+				reception = new Reception
+				{
+					Patient = null,
+					Shedule = schedule,
+					Time = time
+				};
+			}
+			_connection.Close();
+
+			return reception;
+		}
+
+		public List<Shedule> GetSheduleByDoctor (int doctorId)
+		{
+			List<Shedule> shedule = new List<Shedule>();
+
+			_connection.Open();
+
+			string sql = String.Format("select * from schedules where doctor = {0}", doctorId);
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					shedule.Add(new Shedule(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return shedule;
+		}
+
+		public Shedule GetSheduleById(int id)
+		{
+			Shedule shedule = new Shedule();
+
+			_connection.Open();
+
+			string sql = String.Format("select * from schedules where schedule_id = {0}", id);
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					shedule = new Shedule(dbDataRecord);
+				}
+			}
+			_connection.Close();
+
+			return shedule;
+		}
+
+		public void AddSchedule (int scheduleId, int patientId, DateTime time)
+		{
+			_connection.Open();
+			var sql = String.Format("insert into reception (reception_time, patient, schedule) values ('{0}', {1}, {2})", time.ToString("HH:mm:ss"), patientId, scheduleId);
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			cmd.ExecuteNonQuery();
+			_connection.Close();
 		}
 		#endregion
 	}
