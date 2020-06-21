@@ -418,6 +418,29 @@ namespace ClinicData
 
 			return doctors;
 		}
+
+		public List<Doctor> GetDoctorsBySpecAndPatient(int specId, int patientId)
+		{
+			List<Doctor> doctors = new List<Doctor>();
+
+			_connection.Open();
+			var sql = String.Format("select * from patients join (streets join (areas join (doctors join specialities on speciality = speciality_id) " +
+				"on area = area_id) on streets.area = area_id) on street = street_id where patient_id = {0} and speciality = {1}", patientId, specId);
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					doctors.Add(new Doctor(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return doctors;
+		}
 		#endregion
 
 		#region Receptionists
