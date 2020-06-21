@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ClinicApp.Models.CaseRecordModel>
+
+@{
+    ViewBag.Title = "Records";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <ul class="nav nav-tabs" style="margin-top: 50px;">
+        <li>@Html.ActionLink("Главная", "Index", "Doctor")</li>
+        <li>@Html.ActionLink("Моё расписание", "Schedule", "Doctor")</li>
+        <li class="active">@Html.ActionLink("Мои пациенты", "Patients", "Doctor")</li>
+    </ul>
+
+    <div style="margin-top:30px;" class="text-right">
+
+        @Html.ActionLink("Добавить диагноз", "AddRecord", "Doctor", new { patientId = TempData["PatientId"] }, new { @class = "btn btn-primary" })
+    </div>
+
+<div style="margin-top:30px; max-width: 350px;">
+
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default" style="margin: 20px 0;">
+            <div class="panel-heading">@item.Diagnosis.Code &#8212; @item.Diagnosis.Description</div>
+            <div class="panel-body">
+                @item.Record.Therapy
+            </div>
+        </div>
+    }
+</div>
+
+
+<div style="margin-top:30px; max-width: 350px;">
+
+    @Html.ActionLink("Назад", "Patients", "Doctor")
+</div>

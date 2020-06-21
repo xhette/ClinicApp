@@ -4,12 +4,19 @@
     ViewBag.Title = "AddReceptionDoctor";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <ul class="list-group" style="margin-top: 50px">
+<ul class="nav nav-tabs" style="margin-top: 50px;">
+    <li>@Html.ActionLink("Главная", "Index", "Patient")</li>
+    <li>@Html.ActionLink("Диагнозы", "Records", "Patient")</li>
+    <li class="active">@Html.ActionLink("Приёмы", "Receptions", "Patient")</li>
+</ul>
 
-        @foreach (var item in Model)
-        {
-            <li class="list-group-item">
-                @Html.ActionLink(String.Format("{0} {1} {2}", item.Surname, item.Name, item.Patronymic), "AddReceptionSchedule", "Patient", new { docId = item.Id }, null)
-            </li>
-        }
-    </ul>
+
+<ul class="list-group" style="margin-top: 50px">
+
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            @Html.ActionLink(String.Format("{0} {1} {2}", item.Surname, item.Name, item.Patronymic), "AddReceptionSchedule", "Patient", new { docId = item.Id }, null)
+        </li>
+    }
+</ul>

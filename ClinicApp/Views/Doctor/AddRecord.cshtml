@@ -1,0 +1,48 @@
+﻿@model ClinicApp.Models.RecordModel
+
+@{
+    ViewBag.Title = "AddRecord";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs" style="margin-top: 50px;">
+    <li>@Html.ActionLink("Главная", "Index", "Doctor")</li>
+    <li>@Html.ActionLink("Моё расписание", "Schedule", "Doctor")</li>
+    <li class="active">@Html.ActionLink("Мои пациенты", "Patients", "Doctor")</li>
+</ul>
+
+<div style="margin-top: 50px">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.HiddenFor(model => model.Patient)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Diagnosis, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Diagnosis, new SelectList(Model.Diagnoses, "Id", "CodeDescription"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Diagnosis, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Therapy, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Therapy, 5, 15, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Therapy, "", new { @class = "text-danger", @style = "height: 200px; width: 400px!important;" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Сохранить" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>
+    @Html.ActionLink("Назад", "Records", "Doctor", new { patientId = Model.Patient })
+</div>

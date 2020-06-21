@@ -370,6 +370,30 @@ namespace ClinicData
 
 			return patient;
 		}
+
+		public List<PatientComposite> PatientsListByDoctor(int docId)
+		{
+			List<PatientComposite> patients = new List<PatientComposite>();
+
+			_connection.Open();
+
+			var sql = String.Format("select *  from patients join (streets join (areas join (doctors join specialities on speciality = speciality_id) " +
+				"on area = area_id) on streets.area = area_id) on street = street_id join users on patients.account = user_id where doctor_id = {0}", docId);
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					patients.Add(new PatientComposite(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return patients;
+		}
 		#endregion
 
 		#region Doctors
@@ -440,6 +464,29 @@ namespace ClinicData
 			_connection.Close();
 
 			return doctors;
+		}
+
+		public DoctorComposite GetDoctorByUserId(int userId)
+		{
+			DoctorComposite doctor = new DoctorComposite();
+
+			_connection.Open();
+
+			var sql = String.Format("select * from users join (doctors right join areas on area = area_id " +
+				"join specialities on speciality = speciality_id) on account = user_id where user_id = {0}", userId);
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					doctor = new DoctorComposite(dbDataRecord);
+				}
+			}
+			_connection.Close();
+
+			return doctor;
 		}
 		#endregion
 
@@ -641,6 +688,41 @@ namespace ClinicData
 			var cmd = new NpgsqlCommand(sql, _connection);
 
 			cmd.ExecuteNonQuery();
+			_connection.Close();
+		}
+		#endregion
+
+		#region Diagnoses
+		public List<Diagnosis> GetDiagnoses()
+		{
+			List<Diagnosis> diagnoses = new List<Diagnosis>();
+
+			_connection.Open();
+			var sql = String.Format("select * from diagnosis");
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					diagnoses.Add(new Diagnosis(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return diagnoses;
+		}
+
+		public void AddDiagnosis (Record record)
+		{
+			_connection.Open();
+			var sql = String.Format("insert into case_records (patient, diagnosis, therapy) values ({0}, {1}, '{2}')", record.Patient, record.Diagnosis, record.Therapy);
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+			cmd.ExecuteNonQuery();
+
 			_connection.Close();
 		}
 		#endregion

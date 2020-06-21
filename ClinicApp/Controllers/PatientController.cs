@@ -118,7 +118,7 @@ namespace ClinicApp.Controllers
                 {
                     DbWork db = new DbWork();
 
-                    var specialities = db.GetDoctorsBySpecAndPatient(patientId, specId);
+                    var specialities = db.GetDoctorsBySpecAndPatient(specId, patientId);
 
                     List<DoctorModel> model = new List<DoctorModel>();
 

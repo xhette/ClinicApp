@@ -14,6 +14,13 @@ namespace ClinicApp.Models
 
 		public string Description { get; set; }
 
+		public string CodeDescription { 
+			get
+			{
+				return String.Format(Code + " — " + Description);
+			} 
+		}
+
 		public DiagnosisModel () { }
 
 		public DiagnosisModel (Diagnosis diagnosis)

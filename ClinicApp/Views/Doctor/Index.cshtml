@@ -1,0 +1,18 @@
+﻿@model ClinicApp.Models.DoctorModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <ul class="nav nav-tabs" style="margin-top: 50px;">
+        <li class="active">@Html.ActionLink("Главная", "Index", "Doctor")</li>
+        <li>@Html.ActionLink("Моё расписание", "Schedule", "Doctor")</li>
+        <li>@Html.ActionLink("Мои пациенты", "Patients", "Doctor")</li>
+    </ul>
+
+<div style="margin-top: 50px; max-width: 350px;">
+    <ul class="list-group">
+        <li class="list-group-item"><h4>@Model.Surname @Model.Name @Model.Patronymic</h4></li>
+        <li class="list-group-item"><strong>Специализация: </strong>@Model.SpecialityName</li>
+    </ul>
+</div>

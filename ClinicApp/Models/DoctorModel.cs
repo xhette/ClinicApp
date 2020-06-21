@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+
+using ClinicData.Composite;
 using ClinicData.Entities;
 
 namespace ClinicApp.Models
@@ -47,6 +49,18 @@ namespace ClinicApp.Models
 			SpecialityName = db.SpecialityName;
 			Area = db.Area;
 			Account = db.Account;
+		}
+
+		public DoctorModel(DoctorComposite db)
+		{
+			Id = db.Doctor.Id;
+			Surname = db.Doctor.Surname;
+			Name = db.Doctor.Name;
+			Patronymic = db.Doctor.Patronymic;
+			Speciality = db.Doctor.Speciality;
+			SpecialityName = db.Doctor.SpecialityName;
+			Area = db.Doctor.Area;
+			Account = db.Doctor.Account;
 		}
 	}
 }

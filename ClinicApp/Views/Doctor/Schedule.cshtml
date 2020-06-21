@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ClinicApp.Models.ScheduleModel>
+
+@{
+    ViewBag.Title = "AddReceptionSchedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <ul class="nav nav-tabs" style="margin-top: 50px;">
+        <li>@Html.ActionLink("Главная", "Index", "Doctor")</li>
+        <li class="active">@Html.ActionLink("Моё расписание", "Schedule", "Doctor")</li>
+        <li>@Html.ActionLink("Мои пациенты", "Patients", "Doctor")</li>
+    </ul>
+
+<ul class="list-group" style="margin-top: 50px">
+
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            @Html.ActionLink(item.Date.ToString("dd-MM-yyyy"), "Calendar", "Doctor", new { id = item.Id }, null)
+        </li>
+    }
+</ul>

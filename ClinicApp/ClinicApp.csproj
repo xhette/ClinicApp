@@ -204,10 +204,15 @@
     <Content Include="Views\Patient\AddReceptionSpecialities.cshtml" />
     <Content Include="Views\Patient\AddReceptionDoctor.cshtml" />
     <Content Include="Views\Patient\AddReceptionSchedule.cshtml" />
+    <Content Include="Views\Doctor\Index.cshtml" />
+    <Content Include="Views\Doctor\Patients.cshtml" />
+    <Content Include="Views\Doctor\Records.cshtml" />
+    <Content Include="Views\Doctor\Schedule.cshtml" />
+    <Content Include="Views\Doctor\Calendar.cshtml" />
+    <Content Include="Views\Doctor\AddRecord.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Doctor\" />
     <Folder Include="Views\Receptionist\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
