@@ -210,10 +210,13 @@
     <Content Include="Views\Doctor\Schedule.cshtml" />
     <Content Include="Views\Doctor\Calendar.cshtml" />
     <Content Include="Views\Doctor\AddRecord.cshtml" />
+    <Content Include="Views\Receptionist\Index.cshtml" />
+    <Content Include="Views\Receptionist\Areas.cshtml" />
+    <Content Include="Views\Receptionist\PatientsByArea.cshtml" />
+    <Content Include="Views\Receptionist\StreetsByArea.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Receptionist\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>

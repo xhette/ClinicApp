@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "PatientsByArea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="nav nav-tabs" style="margin-top: 50px;">
+    <li>@Html.ActionLink("Пациенты", "Index", "Receptionist")</li>
+    <li class="active">@Html.ActionLink("Участки", "Areas", "Receptionist")</li>
+</ul>
+
+<p style="margin-top: 50px;">
+    <h4>@TempData["AreaName"]</h4>
+</p>
+
+<table class="table" style="margin-top: 50px;">
+    <thead>
+        <tr>
+            <th>
+                ФИО
+            </th>
+            <th>
+                Адрес
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Surname @item.Name @item.Patronymic
+                </td>
+                <td>
+                    @item.Address
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="margin-top: 30px;">
+    @Html.ActionLink("Назад", "Areas", "Receptionist")
+</div>

@@ -394,6 +394,30 @@ namespace ClinicData
 
 			return patients;
 		}
+
+		public List<PatientComposite> PatientsListByArea(int areaId)
+		{
+			List<PatientComposite> patients = new List<PatientComposite>();
+
+			_connection.Open();
+
+			var sql = String.Format("select patient_id, patient_surname, patient_name, patient_patronymic, street, house, room, account, " +
+				"street_id, street_name, area,user_id, login, password, role " +
+				"from users join(patients join streets on street = street_id) on account = user_id where area = {0}", areaId);
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					patients.Add(new PatientComposite(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return patients;
+		}
 		#endregion
 
 		#region Doctors

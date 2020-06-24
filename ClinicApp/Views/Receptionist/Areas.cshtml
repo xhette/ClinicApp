@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ClinicApp.Models.AreaModel>
+
+@{
+    ViewBag.Title = "Areas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <ul class="nav nav-tabs" style="margin-top: 50px;">
+        <li>@Html.ActionLink("Пациенты", "Index", "Receptionist")</li>
+        <li class="active">@Html.ActionLink("Участки", "Areas", "Receptionist")</li>
+    </ul>
+
+<table class="table" style="margin-top: 50px;">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+                На участке
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @Html.ActionLink("пациенты", "PatientsByArea", "Receptionist", new { areaId = item.Id, areaName = item.Name }, null) |
+                    @Html.ActionLink("улицы", "StreetsByArea", "Receptionist", new { areaId = item.Id, areaName = item.Name }, null) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
