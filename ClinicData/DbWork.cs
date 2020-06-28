@@ -512,6 +512,28 @@ namespace ClinicData
 
 			return doctor;
 		}
+
+		public List<Doctor> GetDoctorsByArea(int areaId)
+		{
+			List<Doctor> doctors = new List<Doctor>();
+
+			_connection.Open();
+			var sql = String.Format("select * from doctors join specialities on speciality = speciality_id where area = {0}", areaId);
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					doctors.Add(new Doctor(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return doctors;
+		}
 		#endregion
 
 		#region Receptionists

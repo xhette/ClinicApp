@@ -32,6 +32,9 @@
                 <td>
                     @item.Address
                 </td>
+                <td>
+                    @Html.ActionLink("Записать на приём", "AddReceptionSpecialities", "Receptionist", new { patientId = item.Id }, new { @class = "btn btn-primary" })
+                </td>
             </tr>
         }
     </tbody>

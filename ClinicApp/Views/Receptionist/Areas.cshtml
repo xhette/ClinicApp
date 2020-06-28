@@ -30,7 +30,8 @@
                 </td>
                 <td>
                     @Html.ActionLink("пациенты", "PatientsByArea", "Receptionist", new { areaId = item.Id, areaName = item.Name }, null) |
-                    @Html.ActionLink("улицы", "StreetsByArea", "Receptionist", new { areaId = item.Id, areaName = item.Name }, null) 
+                    @Html.ActionLink("улицы", "StreetsByArea", "Receptionist", new { areaId = item.Id, areaName = item.Name }, null)  |
+                    @Html.ActionLink("врачи", "Doctors", "Receptionist", new { areaId = item.Id, areaName = item.Name }, null)
                 </td>
             </tr>
         }

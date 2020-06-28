@@ -214,6 +214,11 @@
     <Content Include="Views\Receptionist\Areas.cshtml" />
     <Content Include="Views\Receptionist\PatientsByArea.cshtml" />
     <Content Include="Views\Receptionist\StreetsByArea.cshtml" />
+    <Content Include="Views\Receptionist\AddReceptionDoctor.cshtml" />
+    <Content Include="Views\Receptionist\AddReceptionSchedule.cshtml" />
+    <Content Include="Views\Receptionist\AddReceptionSpecialities.cshtml" />
+    <Content Include="Views\Receptionist\ReceptionCalendar.cshtml" />
+    <Content Include="Views\Receptionist\Doctors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

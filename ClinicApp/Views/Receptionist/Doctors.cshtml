@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ClinicApp.Models.DoctorModel>
+
+@{
+    ViewBag.Title = "Doctors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p style="margin-top: 50px;">
+    <h4>@TempData["AreaName"]</h4>
+</p>
+
+<table class="table" style="margin-top: 50px;">
+    <thead>
+        <tr>
+            <th>
+                ФИО
+            </th>
+            <th>
+                Специализация
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Surname @item.Name @item.Patronymic
+                </td>
+                <td>
+                    @item.SpecialityName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="margin-top: 30px;">
+    @Html.ActionLink("Назад", "Areas", "Receptionist")
+</div>
