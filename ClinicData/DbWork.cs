@@ -1,5 +1,7 @@
 ﻿using ClinicData.Composite;
 using ClinicData.Entities;
+using ClinicData.History;
+
 using ClinicDb.Entities;
 using Npgsql;
 using System;
@@ -18,6 +20,35 @@ namespace ClinicData
 		public DbWork()
 		{
 			this._connection = new NpgsqlConnection(_connectionString);
+		}
+
+		public void BaseOperation (string sql)
+		{
+			_connection.Open();
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			cmd.ExecuteNonQuery();
+			_connection.Close();
+		}
+
+		public List<DbDataRecord> GetHistory (string sql)
+		{
+			List<DbDataRecord> result = new List<DbDataRecord>();
+
+			_connection.Open();
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					result.Add(dbDataRecord);
+				}
+			}
+			_connection.Close();
+
+			return result;
 		}
 
 		#region Areas

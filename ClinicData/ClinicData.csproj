@@ -90,6 +90,32 @@
     <Compile Include="Entities\Street.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Composite\PatientComposite.cs" />
+    <Compile Include="HistoryBase\TablesBaseHistory\DoctorBaseHistory.cs" />
+    <Compile Include="HistoryBase\TablesBaseHistory\PatientBaseHistory.cs" />
+    <Compile Include="HistoryBase\TablesBaseHistory\ReceptionBaseHistory.cs" />
+    <Compile Include="HistoryBase\TablesBaseHistory\SpecialityBaseHistory.cs" />
+    <Compile Include="HistoryBase\TablesBaseHistory\StreetBaseHistory.cs" />
+    <Compile Include="HistoryBase\TablesBaseHistory\DiagnosisBaseHistory.cs" />
+    <Compile Include="HistoryBase\TablesBaseHistory\AreasBaseHistory.cs" />
+    <Compile Include="HistoryBase\Enums\DoneStatusEnum.cs" />
+    <Compile Include="HistoryBase\Enums\HistoryTableNamesEnum.cs" />
+    <Compile Include="HistoryBase\HistoryTableWork.cs" />
+    <Compile Include="HistoryBase\IBaseHistory.cs" />
+    <Compile Include="HistoryBase\TablesBaseHistory\RecordBaseHistory.cs" />
+    <Compile Include="HistoryWorks\CommonHistoryWork.cs" />
+    <Compile Include="HistoryWorks\IHistoryWork.cs" />
+    <Compile Include="History\AreaHistory.cs" />
+    <Compile Include="History\DiagnosisHistory.cs" />
+    <Compile Include="History\DoctorHistory.cs" />
+    <Compile Include="History\HistoryTable.cs" />
+    <Compile Include="History\PatientHistory.cs" />
+    <Compile Include="History\ReceptionHistory.cs" />
+    <Compile Include="History\RecordHistory.cs" />
+    <Compile Include="History\RoleHistory.cs" />
+    <Compile Include="History\SheduleHistory.cs" />
+    <Compile Include="History\SpecialityHistory.cs" />
+    <Compile Include="History\StreetHistory.cs" />
+    <Compile Include="History\UserHistory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -97,5 +123,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
