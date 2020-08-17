@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ClinicApp.Models.SpecialityModel>
+
+@{
+    ViewBag.Title = "Специализации";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <ul class="nav nav-tabs" style="margin: 50px;">
+        <li>@Html.ActionLink("Резервное копирование", "Index", "Admin")</li>
+        <li>@Html.ActionLink("Участки", "Index", "AreasHistory")</li>
+        <li>@Html.ActionLink("Истории болезней", "Index", "RecordsHistory")</li>
+        <li>@Html.ActionLink("Диагнозы", "Index", "DiagnosisHistory")</li>
+        <li>@Html.ActionLink("Врачи", "Index", "DoctorHistory")</li>
+        <li>@Html.ActionLink("Пациенты", "Index", "PatientsHistory")</li>
+        <li>@Html.ActionLink("Приёмы", "Index", "ReceptionsHistory")</li>
+        <li class="active">@Html.ActionLink("Спицеализации", "Index", "SpecialitiesHistory")</li>
+        <li>@Html.ActionLink("Улицы", "Index", "StreetsHistory")</li>
+    </ul>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Название
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Name
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

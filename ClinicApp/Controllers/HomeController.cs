@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ClinicApp.Enums;
 using ClinicApp.Models;
 using ClinicData;
+using ClinicData.HistoryBase.Enums;
 
 namespace ClinicApp.Controllers
 {
@@ -20,7 +21,6 @@ namespace ClinicApp.Controllers
 
 
 			UserModel model = new UserModel();
-
 			return View(model);
 		}
 
@@ -50,6 +50,10 @@ namespace ClinicApp.Controllers
 						Session["UserId"] = user.Id;
 						Session["UserRole"] = UserRoleEnum.Receptionist;
 						return RedirectToAction("Index", "Receptionist");
+					case UserRoleEnum.Admin:
+						Session["UserId"] = user.Id;
+						Session["UserRole"] = UserRoleEnum.Admin;
+						return RedirectToAction("Index", "Admin");
 
 					default: break;
 				}

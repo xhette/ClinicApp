@@ -9,6 +9,7 @@ namespace ClinicApp.Enums
 	{
 		Doctor = 1,
 		Receptionist = 2,
-		Pacient = 3
+		Pacient = 3,
+		Admin = 4
 	}
 }

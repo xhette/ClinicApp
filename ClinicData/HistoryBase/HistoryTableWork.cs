@@ -30,6 +30,8 @@ namespace ClinicData.HistoryBase
 				history.Add(new AreaHistory(record));
 			}
 
+			history.Reverse();
+
 			CommonHistoryWork<AreaHistory> common = new CommonHistoryWork<AreaHistory>(current, time, history);
 
 			IBaseHistory<AreaHistory> baseHistory = new AreasBaseHistory();
@@ -61,6 +63,8 @@ namespace ClinicData.HistoryBase
 				history.Add(new RecordHistory(record));
 			}
 
+			history.Reverse();
+
 			CommonHistoryWork<RecordHistory> common = new CommonHistoryWork<RecordHistory>(current, time, history);
 
 			IBaseHistory<RecordHistory> baseHistory = new RecordBaseHistory();
@@ -78,7 +82,7 @@ namespace ClinicData.HistoryBase
 				return -1;
 			}
 		}
-		public static int Diagnosis_history (int current, DateTime time, DoneStatusEnum done)
+		public static int DiagnosisHistory (int current, DateTime time, DoneStatusEnum done)
 		{
 			string sql = String.Format("select * from {0} where operation_time < '{1}'", HistoryTableNamesEnum.diagnosis_history, time);
 
@@ -91,6 +95,8 @@ namespace ClinicData.HistoryBase
 			{
 				history.Add(new DiagnosisHistory(record));
 			}
+
+			history.Reverse();
 
 			CommonHistoryWork<DiagnosisHistory> common = new CommonHistoryWork<DiagnosisHistory>(current, time, history);
 
@@ -123,6 +129,8 @@ namespace ClinicData.HistoryBase
 				history.Add(new DoctorHistory(record));
 			}
 
+			history.Reverse();
+
 			CommonHistoryWork<DoctorHistory> common = new CommonHistoryWork<DoctorHistory>(current, time, history);
 
 			IBaseHistory<DoctorHistory> baseHistory = new DoctorBaseHistory();
@@ -154,6 +162,8 @@ namespace ClinicData.HistoryBase
 				history.Add(new PatientHistory(record));
 			}
 
+			history.Reverse();
+
 			CommonHistoryWork<PatientHistory> common = new CommonHistoryWork<PatientHistory>(current, time, history);
 
 			IBaseHistory<PatientHistory> baseHistory = new PatientBaseHistory();
@@ -184,6 +194,8 @@ namespace ClinicData.HistoryBase
 			{
 				history.Add(new ReceptionHistory(record));
 			}
+
+			history.Reverse();
 
 			CommonHistoryWork<ReceptionHistory> common = new CommonHistoryWork<ReceptionHistory>(current, time, history);
 
@@ -217,6 +229,8 @@ namespace ClinicData.HistoryBase
 				history.Add(new SpecialityHistory(record));
 			}
 
+			history.Reverse();
+
 			CommonHistoryWork<SpecialityHistory> common = new CommonHistoryWork<SpecialityHistory>(current, time, history);
 
 			IBaseHistory<SpecialityHistory> baseHistory = new SpecialityBaseHistory();
@@ -247,6 +261,8 @@ namespace ClinicData.HistoryBase
 			{
 				history.Add(new StreetHistory(record));
 			}
+
+			history.Reverse();
 
 			CommonHistoryWork<StreetHistory> common = new CommonHistoryWork<StreetHistory>(current, time, history);
 

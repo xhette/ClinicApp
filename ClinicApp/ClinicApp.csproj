@@ -120,14 +120,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AreasController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\History\AreasHistoryController.cs" />
+    <Compile Include="Controllers\History\PatientsHistoryController.cs" />
+    <Compile Include="Controllers\History\ReceptionsHistoryController.cs" />
+    <Compile Include="Controllers\History\RecordsHistoryController.cs" />
+    <Compile Include="Controllers\History\DiagnosisHistoryController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
+    <Compile Include="Controllers\History\DoctorHistoryController.cs" />
+    <Compile Include="Controllers\History\SpecialitiesHistoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\ReceptionistController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
-    <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\StreetsController.cs" />
+    <Compile Include="Controllers\History\StreetsHistoryController.cs" />
     <Compile Include="Enums\UserRoleEnum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,16 +188,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Areas\Index.cshtml" />
-    <Content Include="Views\Areas\Create.cshtml" />
-    <Content Include="Views\Areas\Edit.cshtml" />
-    <Content Include="Views\Streets\Create.cshtml" />
-    <Content Include="Views\Streets\Edit.cshtml" />
-    <Content Include="Views\Streets\Index.cshtml" />
-    <Content Include="Views\Streets\ByArea.cshtml" />
-    <Content Include="Views\Roles\Create.cshtml" />
-    <Content Include="Views\Roles\Edit.cshtml" />
-    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\AreasHistory\Index.cshtml" />
+    <Content Include="Views\StreetsHistory\Index.cshtml" />
     <Content Include="Views\Registration\RegisterPacient.cshtml" />
     <Content Include="Views\Registration\RegisterDoctor.cshtml" />
     <Content Include="Views\Registration\RegisterReceptionist.cshtml" />
@@ -219,6 +217,13 @@
     <Content Include="Views\Receptionist\AddReceptionSpecialities.cshtml" />
     <Content Include="Views\Receptionist\ReceptionCalendar.cshtml" />
     <Content Include="Views\Receptionist\Doctors.cshtml" />
+    <Content Include="Views\DoctorHistory\Index.cshtml" />
+    <Content Include="Views\PatientsHistory\Index.cshtml" />
+    <Content Include="Views\ReceptionsHistory\Index.cshtml" />
+    <Content Include="Views\SpecialitiesHistory\Index.cshtml" />
+    <Content Include="Views\DiagnosisHistory\Index.cshtml" />
+    <Content Include="Views\RecordsHistory\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

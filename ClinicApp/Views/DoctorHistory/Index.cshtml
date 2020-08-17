@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ClinicApp.Models.DoctorModel>
+
+@{
+    ViewBag.Title = "Врачи";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <ul class="nav nav-tabs" style="margin: 50px;">
+        <li>@Html.ActionLink("Резервное копирование", "Index", "Admin")</li>
+        <li>@Html.ActionLink("Участки", "Index", "AreasHistory")</li>
+        <li>@Html.ActionLink("Истории болезней", "Index", "RecordsHistory")</li>
+        <li>@Html.ActionLink("Диагнозы", "Index", "DiagnosisHistory")</li>
+        <li class="active">@Html.ActionLink("Врачи", "Index", "DoctorHistory")</li>
+        <li>@Html.ActionLink("Пациенты", "Index", "PatientsHistory")</li>
+        <li>@Html.ActionLink("Приёмы", "Index", "ReceptionsHistory")</li>
+        <li>@Html.ActionLink("Спицеализации", "Index", "SpecialitiesHistory")</li>
+        <li>@Html.ActionLink("Улицы", "Index", "StreetsHistory")</li>
+    </ul>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Имя
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Id специальности
+            </th>
+            <th>
+                Специальность
+            </th>
+            <th>
+                Id участка
+            </th>
+            <th>
+                Id аккаунта
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Surname
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Patronymic
+                </td>
+                <td>
+                    @item.Speciality
+                </td>
+                <td>
+                    @item.SpecialityName
+                </td>
+                <td>
+                    @item.Area
+                </td>
+                <td>
+                    @item.Account
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

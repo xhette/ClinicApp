@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ClinicApp.Models.ReceptionViewModel>
+
+@{
+    ViewBag.Title = "Приёмы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <ul class="nav nav-tabs" style="margin: 50px;">
+        <li>@Html.ActionLink("Резервное копирование", "Index", "Admin")</li>
+        <li>@Html.ActionLink("Участки", "Index", "AreasHistory")</li>
+        <li>@Html.ActionLink("Истории болезней", "Index", "RecordsHistory")</li>
+        <li>@Html.ActionLink("Диагнозы", "Index", "DiagnosisHistory")</li>
+        <li>@Html.ActionLink("Врачи", "Index", "DoctorHistory")</li>
+        <li>@Html.ActionLink("Пациенты", "Index", "PatientsHistory")</li>
+        <li class="active">@Html.ActionLink("Приёмы", "Index", "ReceptionsHistory")</li>
+        <li>@Html.ActionLink("Спицеализации", "Index", "SpecialitiesHistory")</li>
+        <li>@Html.ActionLink("Улицы", "Index", "StreetsHistory")</li>
+    </ul>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Дата
+            </th>
+            <th>
+                Время
+            </th>
+            <th>
+                Врач
+            </th>
+            <th>
+                Специализация
+            </th>
+            <th>
+                Пациент
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Reception.Id
+                </td>
+                <td>
+                    @item.Schedule.Date
+                </td>
+                <td>
+                    @item.Schedule.StartTime - @item.Schedule.EndTime
+                </td>
+                <td>
+                    @item.Doctor.Surname @item.Doctor.Name @item.Doctor.Patronymic
+                </td>
+                <td>
+                    @item.Doctor.SpecialityName
+                </td>
+                <td>
+                    @item.Patient.Surname @item.Patient.Name @item.Patient.Patronymic
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

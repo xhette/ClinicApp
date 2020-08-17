@@ -11,7 +11,7 @@ using ClinicData.HistoryBase.Enums;
 
 namespace ClinicData.HistoryWorks
 {
-	public class CommonHistoryWork <T> where T : HistoryTable
+	public class CommonHistoryWork<T> where T : HistoryTable
 	{
 		private int currentStep;
 
@@ -19,9 +19,9 @@ namespace ClinicData.HistoryWorks
 
 		List<T> historyTable;
 
-		public CommonHistoryWork (int current, DateTime time, List<T> history)
+		public CommonHistoryWork(int current, DateTime time, List<T> history)
 		{
-			history = new List<T>();
+			historyTable = new List<T>();
 
 			currentStep = current;
 			currentDateTime = time;
@@ -32,7 +32,7 @@ namespace ClinicData.HistoryWorks
 		{
 			int returnStep = currentStep;
 
-			if (currentStep < historyTable.Count)
+			if (currentStep < historyTable.Count && currentStep >= 0)
 			{
 				T historyRecord = historyTable[currentStep];
 
@@ -49,6 +49,8 @@ namespace ClinicData.HistoryWorks
 						break;
 					default: break;
 				}
+
+				returnStep++;
 			}
 
 			return returnStep;
@@ -58,10 +60,12 @@ namespace ClinicData.HistoryWorks
 		{
 			int returnStep = currentStep;
 
-			T historyRecord = historyTable[currentStep];
-
-			if (currentStep > 0)
+			if (currentStep > 0 && currentStep <= historyTable.Count)
 			{
+				returnStep--;
+
+				T historyRecord = historyTable[returnStep];
+
 				switch (historyRecord.Operation)
 				{
 					case "INSERT":
@@ -75,6 +79,7 @@ namespace ClinicData.HistoryWorks
 						break;
 					default: break;
 				}
+
 			}
 
 			return returnStep;

@@ -498,6 +498,28 @@ namespace ClinicData
 			return doctors;
 		}
 
+		public List<Doctor> GetDoctors()
+		{
+			List<Doctor> doctors = new List<Doctor>();
+
+			_connection.Open();
+			var sql = String.Format("select * from doctors join specialities on speciality = speciality_id");
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					doctors.Add(new Doctor(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return doctors;
+		}
+
 		public List<Doctor> GetDoctorsBySpecAndPatient(int specId, int patientId)
 		{
 			List<Doctor> doctors = new List<Doctor>();
@@ -653,6 +675,29 @@ namespace ClinicData
 
 			return records;
 		}
+
+		public List<RecordComposite> RecordsList()
+		{
+			List<RecordComposite> records = new List<RecordComposite>();
+
+			_connection.Open();
+
+			var sql = String.Format("select diagnosis_id, diagnosis_code, diagnosis_description, case_id, patient, diagnosis, therapy from " +
+				"(case_records right join patients on patient = patient_id) left join diagnosis on diagnosis = diagnosis_id");
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					records.Add(new RecordComposite(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return records;
+		}
 		#endregion
 
 		#region Receptions
@@ -679,6 +724,31 @@ namespace ClinicData
 			return receptions;
 		}
 
+
+		public List<ReceptionComposite> GetReceptions()
+		{
+			List<ReceptionComposite> receptions = new List<ReceptionComposite>();
+
+			_connection.Open();
+
+			string sql = String.Format("select * from patients join (reception join (schedules join " +
+				"(doctors join specialities on speciality = speciality_id) " +
+				"on doctor = doctor_id) on schedule = schedule_id) on patient = patient_id join streets on street = street_id");
+
+			var cmd = new NpgsqlCommand(sql, _connection);
+
+			NpgsqlDataReader npgSqlDataReader = cmd.ExecuteReader();
+			if (npgSqlDataReader.HasRows)
+			{
+				foreach (DbDataRecord dbDataRecord in npgSqlDataReader)
+				{
+					receptions.Add(new ReceptionComposite(dbDataRecord));
+				}
+			}
+			_connection.Close();
+
+			return receptions;
+		}
 		public Reception ReceptionByScheduleAndTime (int schedule, DateTime time)
 		{
 			Reception reception = new Reception();

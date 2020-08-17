@@ -12,6 +12,15 @@ namespace ClinicData.HistoryBase.TablesBaseHistory
 			string sql = String.Format("SET session_replication_role = replica;" +
 						"delete from reception where reception_id = {0};" +
 						"SET session_replication_role = DEFAULT;", table.Id);
+			try
+			{
+				DbWork db = new DbWork();
+				db.BaseOperation(sql);
+			}
+			catch (Exception ex)
+			{
+
+			}
 		}
 
 		public void Insert(ReceptionHistory table, DoneStatusEnum done)
@@ -38,7 +47,10 @@ namespace ClinicData.HistoryBase.TablesBaseHistory
 				DbWork db = new DbWork();
 				db.BaseOperation(sql);
 			}
-			catch { }
+			catch (Exception ex)
+			{
+
+			}
 		}
 
 		public void Update(ReceptionHistory table, DoneStatusEnum done)
@@ -64,7 +76,10 @@ namespace ClinicData.HistoryBase.TablesBaseHistory
 				DbWork db = new DbWork();
 				db.BaseOperation(sql);
 			}
-			catch { }
+			catch (Exception ex)
+			{
+
+			}
 		}
 	}
 }
