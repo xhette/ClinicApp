@@ -5,14 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
     <ul class="nav nav-tabs" style="margin: 50px;">
-        <li>@Html.ActionLink("Резервное копирование", "Index", "Admin")</li>
         <li>@Html.ActionLink("Участки", "Index", "AreasHistory")</li>
         <li>@Html.ActionLink("Истории болезней", "Index", "RecordsHistory")</li>
         <li class="active">@Html.ActionLink("Диагнозы", "Index", "DiagnosisHistory")</li>
         <li>@Html.ActionLink("Врачи", "Index", "DoctorHistory")</li>
         <li>@Html.ActionLink("Пациенты", "Index", "PatientsHistory")</li>
         <li>@Html.ActionLink("Приёмы", "Index", "ReceptionsHistory")</li>
-        <li>@Html.ActionLink("Спицеализации", "Index", "SpecialitiesHistory")</li>
+        <li>@Html.ActionLink("Специализации", "Index", "SpecialitiesHistory")</li>
         <li>@Html.ActionLink("Улицы", "Index", "StreetsHistory")</li>
     </ul>
 
@@ -47,3 +46,10 @@
         }
     </tbody>
 </table>
+
+<div style="margin: 50px">
+    <div class="text-center">
+        @Html.ActionLink("<< Отмена", "Undone", "DiagnosisHistory", new { time = ViewBag.Time, step = ViewBag.Step }, new { @style = "margin: 0 5px" })
+        @Html.ActionLink("Повтор >>", "Redone", "DiagnosisHistory", new { time = ViewBag.Time, step = ViewBag.Step }, new { @style = "margin: 0 5px" })
+    </div>
+</div>

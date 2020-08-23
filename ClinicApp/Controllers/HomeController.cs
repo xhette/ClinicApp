@@ -18,6 +18,7 @@ namespace ClinicApp.Controllers
 			Session["UserId"] = null;
 			Session["UserRole"] = null;
 			Session["PatientId"] = null;
+			Session["DoctorId"] = null;
 
 
 			UserModel model = new UserModel();

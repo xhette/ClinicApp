@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
+using ClinicData;
 
 namespace ClinicApp.Controllers
 {
@@ -11,7 +14,7 @@ namespace ClinicApp.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "AreasHistory");
         }
     }
 }

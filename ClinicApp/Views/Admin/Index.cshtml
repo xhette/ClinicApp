@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@model ClinicApp.Models.BackupModel
+
 <ul class="nav nav-tabs" style="margin: 50px;">
     <li class="active">@Html.ActionLink("Резервное копирование", "Index", "Admin")</li>
     <li>@Html.ActionLink("Участки", "Index", "AreasHistory")</li>
@@ -12,6 +14,27 @@
     <li>@Html.ActionLink("Врачи", "Index", "DoctorHistory")</li>
     <li>@Html.ActionLink("Пациенты", "Index", "PatientsHistory")</li>
     <li>@Html.ActionLink("Приёмы", "Index", "ReceptionsHistory")</li>
-    <li>@Html.ActionLink("Спицеализации", "Index", "SpecialitiesHistory")</li>
+    <li>@Html.ActionLink("Специализации", "Index", "SpecialitiesHistory")</li>
     <li>@Html.ActionLink("Улицы", "Index", "StreetsHistory")</li>
 </ul>
+
+
+        <div class="row" style="margin: 50px">
+            <div class="col-md-12">
+                @using (Html.BeginForm("Restore", "Backup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.File, new { type = "file", @style = "min-width: 100%", @multiple = "multiple", required = "required", @class = "form-control" })
+
+                    </div>
+                    <div class="col-md-4">
+                        <input type="submit" class="btn btn-primary" value="Восстановить из резервной копии" />
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-12">
+                @Html.ActionLink("Сделать резервную копию", "Backup", "Admin", new { @class = "btn btn-primary" })
+            </div>
+        </div>

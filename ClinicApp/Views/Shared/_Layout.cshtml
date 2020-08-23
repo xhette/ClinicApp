@@ -20,9 +20,23 @@
                 <span class="navbar-brand">Поликлиника №6</span>
             </div>
             <div class="navbar-collapse collapse">
+                @if (Session["UserRole"] != null && Session["UserId"] != null)
+                {
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Выйти", "Index", "Home")</li>
                 </ul>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.ActionLink("Войти", "Index", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Регистрация", "Index", "Registration")
+                        </li>
+                    </ul>
+                }
             </div>
         </div>
     </div>
